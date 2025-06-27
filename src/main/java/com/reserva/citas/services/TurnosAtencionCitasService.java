@@ -27,7 +27,7 @@ public class TurnosAtencionCitasService implements ITurnosAtencionCitasService{
 	}
 
 	@Override
-	public TurnosAtencionCitas guardar(TurnosAtencionCitas t) {
+	public TurnosAtencionCitas guardar(TurnosAtencionCitas t) {		
 		return data.save(t);
 	}
 

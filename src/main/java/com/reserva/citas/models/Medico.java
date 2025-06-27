@@ -25,7 +25,7 @@ public class Medico {
 	@JoinColumn(name = "id_especialidad", nullable = false)
 	private Especialidad especialidad;
 	
-	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "medico", orphanRemoval = false)
 	private List<TurnosAtencionCitas> turnos;
 	
 	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)

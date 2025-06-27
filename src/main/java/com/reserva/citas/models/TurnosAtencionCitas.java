@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +27,8 @@ public class TurnosAtencionCitas {
 	private int idTurnosAtencionCitas;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_medico", nullable = false)
+	@JoinColumn(name = "id_medico", nullable = true)
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private Medico medico;
 	
 	@ManyToOne
