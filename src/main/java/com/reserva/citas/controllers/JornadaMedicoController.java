@@ -45,8 +45,6 @@ public class JornadaMedicoController {
 
 	    JornadaMedicos jornadaMedicosExistente = jornadaMedicosExistenteOpt.get();
 	    
-	    jornadaMedicosExistente.setHoraInicio(j.getHoraInicio());
-	    jornadaMedicosExistente.setHoraFin(j.getHoraFin());
 	    jornadaMedicosExistente.setDiaSemana(j.getDiaSemana());
 	    jornadaMedicosExistente.setMedico(j.getMedico());
 

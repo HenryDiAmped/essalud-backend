@@ -7,27 +7,27 @@ INSERT INTO Especialidades (nombre_especialidad, descripcion) VALUES ('Cardiolog
 INSERT INTO Medicos (nombre_medico, id_especialidad) VALUES ('Dr. Juan Pérez', 1),('Dra. María Torres', 2),('Dr. Luis Gutiérrez', 3),('Dra. Ana Morales', 4),('Dr. Pedro Rivas', 5),('Dra. Carla Jiménez', 6),('Dr. Esteban Soto', 7),('Dra. Verónica Salas', 8),('Dr. Jorge Mendoza', 9),('Dra. Isabel Chávez', 10),('Dr. Ricardo Paredes', 1),('Dra. Natalia León', 2),('Dr. Hugo Fernández', 3),('Dra. Sofía Campos', 4),('Dr. Fernando Díaz', 5),('Dra. Daniela Rojas', 6),('Dr. Andrés Navarro', 7),('Dra. Teresa Blanco', 8),('Dr. Víctor Quispe', 9),('Dra. Lorena Palacios', 10);
 
 -- Insercion de Jornada de los medicos
--- Médico 1: Cardiología - Lunes a Viernes 08:00-16:00
--- Médico 2: Dermatología - Martes y Jueves 10:00-18:00
--- Médico 3: Neurología - Lunes, Miércoles y Viernes 09:00-17:00
--- Médico 4: Pediatría - Martes a Sábado 08:30-15:30
--- Médico 5: Ginecología - Lunes a Jueves 07:00-14:00
--- Médico 6: Ortopedia - Miércoles a Domingo 10:00-19:00
--- Médico 7: Oftalmología - Lunes a Viernes 09:30-16:30
--- Médico 8: Psiquiatría - Martes y Viernes 08:00-12:00
--- Médico 9: Oncología - Lunes, Miércoles y Sábado 11:00-20:00
--- Médico 10: Endocrinología - Jueves y Domingo 07:30-14:30
--- Médico 11: Cardiología - Lunes a Viernes 08:00-16:00
--- Médico 12: Dermatología - Martes y Jueves 10:00-18:00
--- Médico 13: Neurología - Lunes, Miércoles y Viernes 09:00-17:00
--- Médico 14: Pediatría - Martes a Sábado 08:30-15:30
--- Médico 15: Ginecología - Lunes a Jueves 07:00-14:00
--- Médico 16: Ortopedia - Miércoles a Domingo 10:00-19:00
--- Médico 17: Oftalmología - Lunes a Viernes 09:30-16:30
--- Médico 18: Psiquiatría - Martes y Viernes 08:00-12:00
--- Médico 19: Oncología - Lunes, Miércoles y Sábado 11:00-20:00
--- Médico 20: Endocrinología - Jueves y Domingo 07:30-14:30
-INSERT INTO Jornada_medicos (id_medico, dia_semana, hora_inicio, hora_fin) VALUES (1, 'lunes', '08:00', '16:00'),(1, 'martes', '08:00', '16:00'),(1, 'miércoles', '08:00', '16:00'),(1, 'jueves', '08:00', '16:00'),(1, 'viernes', '08:00', '16:00'),(2, 'martes', '10:00', '18:00'),(2, 'jueves', '10:00', '18:00'),(3, 'lunes', '09:00', '17:00'),(3, 'miércoles', '09:00', '17:00'),(3, 'viernes', '09:00', '17:00'),(4, 'martes', '08:30', '15:30'),(4, 'miércoles', '08:30', '15:30'),(4, 'jueves', '08:30', '15:30'),(4, 'viernes', '08:30', '15:30'),(4, 'sábado', '08:30', '15:30'),(5, 'lunes', '07:00', '14:00'),(5, 'martes', '07:00', '14:00'),(5, 'miércoles', '07:00', '14:00'),(5, 'jueves', '07:00', '14:00'),(6, 'miércoles', '10:00', '19:00'),(6, 'jueves', '10:00', '19:00'),(6, 'viernes', '10:00', '19:00'),(6, 'sábado', '10:00', '19:00'),(6, 'domingo', '10:00', '19:00'),(7, 'lunes', '09:30', '16:30'),(7, 'martes', '09:30', '16:30'),(7, 'miércoles', '09:30', '16:30'),(7, 'jueves', '09:30', '16:30'),(7, 'viernes', '09:30', '16:30'),(8, 'martes', '08:00', '12:00'),(8, 'viernes', '08:00', '12:00'),(9, 'lunes', '11:00', '20:00'),(9, 'miércoles', '11:00', '20:00'),(9, 'sábado', '11:00', '20:00'),(10, 'jueves', '07:30', '14:30'),(10, 'domingo', '07:30', '14:30'),(11, 'lunes', '08:00', '16:00'),(11, 'martes', '08:00', '16:00'),(11, 'miércoles', '08:00', '16:00'),(11, 'jueves', '08:00', '16:00'),(11, 'viernes', '08:00', '16:00'),(12, 'martes', '10:00', '18:00'),(12, 'jueves', '10:00', '18:00'),(13, 'lunes', '09:00', '17:00'),(13, 'miércoles', '09:00', '17:00'),(13, 'viernes', '09:00', '17:00'),(14, 'martes', '08:30', '15:30'),(14, 'miércoles', '08:30', '15:30'),(14, 'jueves', '08:30', '15:30'),(14, 'viernes', '08:30', '15:30'),(14, 'sábado', '08:30', '15:30'),(15, 'lunes', '07:00', '14:00'),(15, 'martes', '07:00', '14:00'),(15, 'miércoles', '07:00', '14:00'),(15, 'jueves', '07:00', '14:00'),(16, 'miércoles', '10:00', '19:00'),(16, 'jueves', '10:00', '19:00'),(16, 'viernes', '10:00', '19:00'),(16, 'sábado', '10:00', '19:00'),(16, 'domingo', '10:00', '19:00'),(17, 'lunes', '09:30', '16:30'),(17, 'martes', '09:30', '16:30'),(17, 'miércoles', '09:30', '16:30'),(17, 'jueves', '09:30', '16:30'),(17, 'viernes', '09:30', '16:30'),(18, 'martes', '08:00', '12:00'),(18, 'viernes', '08:00', '12:00'),(19, 'lunes', '11:00', '20:00'),(19, 'miércoles', '11:00', '20:00'),(19, 'sábado', '11:00', '20:00'),(20, 'jueves', '07:30', '14:30'),(20, 'domingo', '07:30', '14:30');
+-- Médico 1: Cardiología - Lunes a Viernes
+-- Médico 2: Dermatología - Martes y Jueves
+-- Médico 3: Neurología - Lunes, Miércoles y Viernes
+-- Médico 4: Pediatría - Martes a Sábado
+-- Médico 5: Ginecología - Lunes a Jueves
+-- Médico 6: Ortopedia - Miércoles a Domingo
+-- Médico 7: Oftalmología - Lunes a Viernes
+-- Médico 8: Psiquiatría - Martes y Viernes
+-- Médico 9: Oncología - Lunes, Miércoles y Sábado
+-- Médico 10: Endocrinología - Jueves y Domingo
+-- Médico 11: Cardiología - Lunes a Viernes
+-- Médico 12: Dermatología - Martes y Jueves
+-- Médico 13: Neurología - Lunes, Miércoles y Viernes
+-- Médico 14: Pediatría - Martes a Sábado
+-- Médico 15: Ginecología - Lunes a Jueves
+-- Médico 16: Ortopedia - Miércoles a Domingo
+-- Médico 17: Oftalmología - Lunes a Viernes
+-- Médico 18: Psiquiatría - Martes y Viernes
+-- Médico 19: Oncología - Lunes, Miércoles y Sábado
+-- Médico 20: Endocrinología - Jueves y Domingo
+INSERT INTO Jornada_medicos (id_medico, dia_semana) VALUES (1, 'lunes'),(1, 'martes'),(1, 'miércoles'),(1, 'jueves'),(1, 'viernes'),(2, 'martes'),(2, 'jueves'),(3, 'lunes'),(3, 'miércoles'),(3, 'viernes'),(4, 'martes'),(4, 'miércoles'),(4, 'jueves'),(4, 'viernes'),(4, 'sábado'),(5, 'lunes'),(5, 'martes'),(5, 'miércoles'),(5, 'jueves'),(6, 'miércoles'),(6, 'jueves'),(6, 'viernes'),(6, 'sábado'),(6, 'domingo'),(7, 'lunes'),(7, 'martes'),(7, 'miércoles'),(7, 'jueves'),(7, 'viernes'),(8, 'martes'),(8, 'viernes'),(9, 'lunes'),(9, 'miércoles'),(9, 'sábado'),(10, 'jueves'),(10, 'domingo'),(11, 'lunes'),(11, 'martes'),(11, 'miércoles'),(11, 'jueves'),(11, 'viernes'),(12, 'martes'),(12, 'jueves'),(13, 'lunes'),(13, 'miércoles'),(13, 'viernes'),(14, 'martes'),(14, 'miércoles'),(14, 'jueves'),(14, 'viernes'),(14, 'sábado'),(15, 'lunes'),(15, 'martes'),(15, 'miércoles'),(15, 'jueves'),(16, 'miércoles'),(16, 'jueves'),(16, 'viernes'),(16, 'sábado'),(16, 'domingo'),(17, 'lunes'),(17, 'martes'),(17, 'miércoles'),(17, 'jueves'),(17, 'viernes'),(18, 'martes'),(18, 'viernes'),(19, 'lunes'),(19, 'miércoles'),(19, 'sábado'),(20, 'jueves'),(20, 'domingo');
 
 -- Insercion de Sedes
 INSERT INTO Sedes (nombre_distrito, nombre_sede) VALUES ('Ate', 'Hospital II Vitarte'),('Barranco', 'Policlínico Barranco'),('Breña', 'Policlínico Breña'),('Carabayllo', 'Hospital I Marino Molina Scippa'),('Chorrillos', 'Policlínico Juan Jose Rodriguez Lazo'),('Comas', 'Hospital I Marino Molina Scippa'),('El Agustino', 'Policlínico El Agustino'),('Independencia', 'Hospital I Independencia'),('Jesús María', 'Hospital Nacional Edgardo Rebagliati Martins'),('La Molina', 'Hospital I Carlos Alcántara Butterfield'),('La Victoria', 'Hospital Nacional Guillermo Almenara Irigoyen'),('Lince', 'Policlínico Lince'),('Los Olivos', 'Policlínico Los Olivos'),('Lurigancho (Chosica)', 'Policlínico Chosica'),('Lurin', 'Centro de Atención Primaria II Lurín'),('Magdalena del Mar', 'Policlínico Magdalena del Mar'),('Miraflores', 'Hospital III Suárez Angamos'),('Pueblo Libre', 'Policlínico Pueblo Libre'),('Puente Piedra', 'Centro de Atención Primaria III Puente Piedra'),('Rimac', 'Policlínico Francisco Pizarro'),('San Borja', 'Policlínico San Borja'),('San Isidro', 'Centro de Atención Primaria III San Isidro'),('San Juan de Lurigancho', 'Hospital I Marco Aurelio Díaz Ufano'),('San Juan de Miraflores', 'Policlínico San Juan de Miraflores'),('San Luis', 'Policlínico de Complejidad Creciente San Luis'),('San Martín de Porres', 'Policlínico San Martín de Porres'),('San Miguel', 'Hospital I Octavio Mongrut Muñoz'),('Santa Anita', 'Policlínico Santa Anita'),('Santiago de Surco', 'Policlínico Próceres'),('Surquillo', 'Policlínico Surquillo'),('Villa El Salvador', 'Hospital I Uldarico Rocca Fernández'),('Villa María del Triunfo', 'Hospital Guillermo Kaelin de la Fuente');

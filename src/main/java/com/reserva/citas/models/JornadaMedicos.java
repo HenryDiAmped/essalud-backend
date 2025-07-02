@@ -1,7 +1,5 @@
 package com.reserva.citas.models;
 
-import java.time.LocalTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,12 +22,6 @@ public class JornadaMedicos {
 	@ManyToOne
 	@JoinColumn(name = "id_medico", nullable = false)
 	private Medico medico;
-	
-	@Column(name = "hora_inicio", nullable = false)
-	private LocalTime horaInicio;
-	
-	@Column(name = "hora_fin", nullable = false)
-	private LocalTime horaFin;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "dia_semana", nullable = false)
@@ -45,22 +37,6 @@ public class JornadaMedicos {
 
 	public void setMedico(Medico medico) {
 		this.medico = medico;
-	}
-
-	public LocalTime getHoraInicio() {
-		return horaInicio;
-	}
-
-	public void setHoraInicio(LocalTime horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public LocalTime getHoraFin() {
-		return horaFin;
-	}
-
-	public void setHoraFin(LocalTime horaFin) {
-		this.horaFin = horaFin;
 	}
 
 	public DiaSemana getDiaSemana() {
