@@ -1,5 +1,7 @@
 package com.reserva.citas.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,9 @@ public class PacienteService implements IPacienteService{
 		return data.save(p);
 	}
 
+	@Override
+	public List<Paciente> listar() {
+		List<Paciente> listar = (List<Paciente>) data.findAll();
+		return listar;
+	}
 }
