@@ -1,0 +1,313 @@
+/*************************************/
+CREATE DATABASE  IF NOT EXISTS `db_essalud_reserva_de_citas_medicas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db_essalud_reserva_de_citas_medicas`;
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: db_essalud_reserva_de_citas_medicas
+-- ------------------------------------------------------
+-- Server version	8.3.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `administradores`
+--
+
+DROP TABLE IF EXISTS `administradores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `administradores` (
+  `id_administrador` int NOT NULL AUTO_INCREMENT,
+  `id_usuario` int NOT NULL,
+  PRIMARY KEY (`id_administrador`),
+  UNIQUE KEY `UKili2w8lisc96c9d1mxjqfr3hy` (`id_usuario`),
+  CONSTRAINT `FK28dj1ai3f8gnqhjuns8dnamrp` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `administradores`
+--
+
+LOCK TABLES `administradores` WRITE;
+/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES (1,1),(2,2),(3,3),(4,4);
+/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `citas`
+--
+
+DROP TABLE IF EXISTS `citas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `citas` (
+  `hora_cita` time(6) NOT NULL,
+  `id_cita` int NOT NULL AUTO_INCREMENT,
+  `id_paciente` int NOT NULL,
+  `id_turnos_atencion_citas` int NOT NULL,
+  `estado` enum('ATENDIDA','CANCELADA','POR_ATENDER') NOT NULL,
+  PRIMARY KEY (`id_cita`),
+  KEY `FKa6jbqxi4v5ij2jdlgrmwnt94o` (`id_paciente`),
+  KEY `FK1l3832jpacadv8esdoqygxa6i` (`id_turnos_atencion_citas`),
+  CONSTRAINT `FK1l3832jpacadv8esdoqygxa6i` FOREIGN KEY (`id_turnos_atencion_citas`) REFERENCES `turnos_atencion_citas` (`id_turnos_atencion_citas`),
+  CONSTRAINT `FKa6jbqxi4v5ij2jdlgrmwnt94o` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `citas`
+--
+
+LOCK TABLES `citas` WRITE;
+/*!40000 ALTER TABLE `citas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `citas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `detalle_sede`
+--
+
+DROP TABLE IF EXISTS `detalle_sede`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `detalle_sede` (
+  `id_detalle_sede` int NOT NULL AUTO_INCREMENT,
+  `id_especialidad` int NOT NULL,
+  `id_sedes` int NOT NULL,
+  PRIMARY KEY (`id_detalle_sede`),
+  KEY `FKfq0ux7kue7bxrumccjs6gxyvk` (`id_especialidad`),
+  KEY `FKcji0upsavu2b17703chtbikyx` (`id_sedes`),
+  CONSTRAINT `FKcji0upsavu2b17703chtbikyx` FOREIGN KEY (`id_sedes`) REFERENCES `sedes` (`id_sedes`),
+  CONSTRAINT `FKfq0ux7kue7bxrumccjs6gxyvk` FOREIGN KEY (`id_especialidad`) REFERENCES `especialidades` (`id_especialidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detalle_sede`
+--
+
+LOCK TABLES `detalle_sede` WRITE;
+/*!40000 ALTER TABLE `detalle_sede` DISABLE KEYS */;
+INSERT INTO `detalle_sede` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,2),(5,5,2),(6,6,3),(7,7,3),(8,1,4),(9,8,4),(10,9,5),(11,2,5),(12,3,6),(13,10,6),(14,4,7),(15,5,7),(16,6,8),(17,1,8),(18,2,9),(19,3,9),(20,4,9),(21,5,10),(22,6,10),(23,7,11),(24,8,11),(25,9,12),(26,10,12),(27,1,13),(28,2,13),(29,3,14),(30,4,14),(31,5,15),(32,6,15),(33,7,16),(34,8,16),(35,9,17),(36,10,17),(37,1,18),(38,2,18),(39,3,19),(40,4,19),(41,5,20),(42,6,20),(43,7,21),(44,8,21),(45,9,22),(46,10,22),(47,1,23),(48,2,23),(49,3,23),(50,4,24),(51,5,24),(52,6,25),(53,7,25),(54,8,26),(55,9,26),(56,10,27),(57,1,27),(58,2,28),(59,3,28),(60,4,29),(61,5,29),(62,6,30),(63,7,30),(64,8,31),(65,9,31),(66,10,32),(67,1,32);
+/*!40000 ALTER TABLE `detalle_sede` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `especialidades`
+--
+
+DROP TABLE IF EXISTS `especialidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `especialidades` (
+  `id_especialidad` int NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(100) NOT NULL,
+  `nombre_especialidad` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_especialidad`),
+  UNIQUE KEY `UKbuqv43fpwaf4163kpujyi7lkd` (`nombre_especialidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `especialidades`
+--
+
+LOCK TABLES `especialidades` WRITE;
+/*!40000 ALTER TABLE `especialidades` DISABLE KEYS */;
+INSERT INTO `especialidades` VALUES (1,'Especialidad médica enfocada en el corazón y sistema circulatorio.','Cardiología'),(2,'Especialidad dedicada al diagnóstico y tratamiento de enfermedades de la piel.','Dermatología'),(3,'Se encarga del sistema nervioso y sus trastornos.','Neurología'),(4,'Especialidad médica centrada en la salud de los niños.','Pediatría'),(5,'Se enfoca en el sistema reproductor femenino.','Ginecología'),(6,'Especialidad que trata las condiciones del sistema musculoesquelético.','Ortopedia'),(7,'Diagnóstico y tratamiento de enfermedades oculares.','Oftalmología'),(8,'Se ocupa de los trastornos mentales y emocionales.','Psiquiatría'),(9,'Diagnóstico y tratamiento del cáncer.','Oncología'),(10,'Estudio de las hormonas y las glándulas endocrinas.','Endocrinología');
+/*!40000 ALTER TABLE `especialidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jornada_medicos`
+--
+
+DROP TABLE IF EXISTS `jornada_medicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `jornada_medicos` (
+  `id_jornada_medicos` int NOT NULL AUTO_INCREMENT,
+  `id_medico` int NOT NULL,
+  `dia_semana` enum('DOMINGO','JUEVES','LUNES','MARTES','MIERCOLES','SABADO','VIERNES') NOT NULL,
+  PRIMARY KEY (`id_jornada_medicos`),
+  KEY `FKgd1b5sld4xcjclq0tssianxmr` (`id_medico`),
+  CONSTRAINT `FKgd1b5sld4xcjclq0tssianxmr` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jornada_medicos`
+--
+
+LOCK TABLES `jornada_medicos` WRITE;
+/*!40000 ALTER TABLE `jornada_medicos` DISABLE KEYS */;
+INSERT INTO `jornada_medicos` VALUES (1,1,'LUNES'),(2,1,'MARTES'),(3,1,'MIERCOLES'),(4,1,'JUEVES'),(5,1,'VIERNES'),(6,2,'MARTES'),(7,2,'JUEVES'),(8,3,'LUNES'),(9,3,'MIERCOLES'),(10,3,'VIERNES'),(11,4,'MARTES'),(12,4,'MIERCOLES'),(13,4,'JUEVES'),(14,4,'VIERNES'),(15,4,'SABADO'),(16,5,'LUNES'),(17,5,'MARTES'),(18,5,'MIERCOLES'),(19,5,'JUEVES'),(20,6,'MIERCOLES'),(21,6,'JUEVES'),(22,6,'VIERNES'),(23,6,'SABADO'),(24,6,'DOMINGO'),(25,7,'LUNES'),(26,7,'MARTES'),(27,7,'MIERCOLES'),(28,7,'JUEVES'),(29,7,'VIERNES'),(30,8,'MARTES'),(31,8,'VIERNES'),(32,9,'LUNES'),(33,9,'MIERCOLES'),(34,9,'SABADO'),(35,10,'JUEVES'),(36,10,'DOMINGO'),(37,11,'LUNES'),(38,11,'MARTES'),(39,11,'MIERCOLES'),(40,11,'JUEVES'),(41,11,'VIERNES'),(42,12,'MARTES'),(43,12,'JUEVES'),(44,13,'LUNES'),(45,13,'MIERCOLES'),(46,13,'VIERNES'),(47,14,'MARTES'),(48,14,'MIERCOLES'),(49,14,'JUEVES'),(50,14,'VIERNES'),(51,14,'SABADO'),(52,15,'LUNES'),(53,15,'MARTES'),(54,15,'MIERCOLES'),(55,15,'JUEVES'),(56,16,'MIERCOLES'),(57,16,'JUEVES'),(58,16,'VIERNES'),(59,16,'SABADO'),(60,16,'DOMINGO'),(61,17,'LUNES'),(62,17,'MARTES'),(63,17,'MIERCOLES'),(64,17,'JUEVES'),(65,17,'VIERNES'),(66,18,'MARTES'),(67,18,'VIERNES'),(68,19,'LUNES'),(69,19,'MIERCOLES'),(70,19,'SABADO'),(71,20,'JUEVES'),(72,20,'DOMINGO');
+/*!40000 ALTER TABLE `jornada_medicos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `medicos`
+--
+
+DROP TABLE IF EXISTS `medicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `medicos` (
+  `id_especialidad` int NOT NULL,
+  `id_medico` int NOT NULL AUTO_INCREMENT,
+  `nombre_medico` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_medico`),
+  KEY `FK2nylr0i1cc447kekjgtxvd7he` (`id_especialidad`),
+  CONSTRAINT `FK2nylr0i1cc447kekjgtxvd7he` FOREIGN KEY (`id_especialidad`) REFERENCES `especialidades` (`id_especialidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `medicos`
+--
+
+LOCK TABLES `medicos` WRITE;
+/*!40000 ALTER TABLE `medicos` DISABLE KEYS */;
+INSERT INTO `medicos` VALUES (1,1,'Dr. Juan Pérez'),(2,2,'Dra. María Torres'),(3,3,'Dr. Luis Gutiérrez'),(4,4,'Dra. Ana Morales'),(5,5,'Dr. Pedro Rivas'),(6,6,'Dra. Carla Jiménez'),(7,7,'Dr. Esteban Soto'),(8,8,'Dra. Verónica Salas'),(9,9,'Dr. Jorge Mendoza'),(10,10,'Dra. Isabel Chávez'),(1,11,'Dr. Ricardo Paredes'),(2,12,'Dra. Natalia León'),(3,13,'Dr. Hugo Fernández'),(4,14,'Dra. Sofía Campos'),(5,15,'Dr. Fernando Díaz'),(6,16,'Dra. Daniela Rojas'),(7,17,'Dr. Andrés Navarro'),(8,18,'Dra. Teresa Blanco'),(9,19,'Dr. Víctor Quispe'),(10,20,'Dra. Lorena Palacios');
+/*!40000 ALTER TABLE `medicos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pacientes`
+--
+
+DROP TABLE IF EXISTS `pacientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pacientes` (
+  `id_paciente` int NOT NULL AUTO_INCREMENT,
+  `id_usuario` int NOT NULL,
+  PRIMARY KEY (`id_paciente`),
+  UNIQUE KEY `UKsukacb4bsdvdccsqxuulbindo` (`id_usuario`),
+  CONSTRAINT `FK34je9ip2cpgvy3m4ove9lmmqk` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pacientes`
+--
+
+LOCK TABLES `pacientes` WRITE;
+/*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sedes`
+--
+
+DROP TABLE IF EXISTS `sedes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sedes` (
+  `id_sedes` int NOT NULL AUTO_INCREMENT,
+  `nombre_distrito` varchar(100) NOT NULL,
+  `nombre_sede` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_sedes`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sedes`
+--
+
+LOCK TABLES `sedes` WRITE;
+/*!40000 ALTER TABLE `sedes` DISABLE KEYS */;
+INSERT INTO `sedes` VALUES (1,'Ate','Hospital II Vitarte'),(2,'Barranco','Policlínico Barranco'),(3,'Breña','Policlínico Breña'),(4,'Carabayllo','Hospital I Marino Molina Scippa'),(5,'Chorrillos','Policlínico Juan Jose Rodriguez Lazo'),(6,'Comas','Hospital I Marino Molina Scippa'),(7,'El Agustino','Policlínico El Agustino'),(8,'Independencia','Hospital I Independencia'),(9,'Jesús María','Hospital Nacional Edgardo Rebagliati Martins'),(10,'La Molina','Hospital I Carlos Alcántara Butterfield'),(11,'La Victoria','Hospital Nacional Guillermo Almenara Irigoyen'),(12,'Lince','Policlínico Lince'),(13,'Los Olivos','Policlínico Los Olivos'),(14,'Lurigancho (Chosica)','Policlínico Chosica'),(15,'Lurin','Centro de Atención Primaria II Lurín'),(16,'Magdalena del Mar','Policlínico Magdalena del Mar'),(17,'Miraflores','Hospital III Suárez Angamos'),(18,'Pueblo Libre','Policlínico Pueblo Libre'),(19,'Puente Piedra','Centro de Atención Primaria III Puente Piedra'),(20,'Rimac','Policlínico Francisco Pizarro'),(21,'San Borja','Policlínico San Borja'),(22,'San Isidro','Centro de Atención Primaria III San Isidro'),(23,'San Juan de Lurigancho','Hospital I Marco Aurelio Díaz Ufano'),(24,'San Juan de Miraflores','Policlínico San Juan de Miraflores'),(25,'San Luis','Policlínico de Complejidad Creciente San Luis'),(26,'San Martín de Porres','Policlínico San Martín de Porres'),(27,'San Miguel','Hospital I Octavio Mongrut Muñoz'),(28,'Santa Anita','Policlínico Santa Anita'),(29,'Santiago de Surco','Policlínico Próceres'),(30,'Surquillo','Policlínico Surquillo'),(31,'Villa El Salvador','Hospital I Uldarico Rocca Fernández'),(32,'Villa María del Triunfo','Hospital Guillermo Kaelin de la Fuente');
+/*!40000 ALTER TABLE `sedes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `turnos_atencion_citas`
+--
+
+DROP TABLE IF EXISTS `turnos_atencion_citas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `turnos_atencion_citas` (
+  `fecha` date NOT NULL,
+  `hora_fin` time(6) NOT NULL,
+  `hora_inicio` time(6) NOT NULL,
+  `id_detalle_sede` int NOT NULL,
+  `id_medico` int DEFAULT NULL,
+  `id_turnos_atencion_citas` int NOT NULL AUTO_INCREMENT,
+  `num_cupos` int NOT NULL,
+  PRIMARY KEY (`id_turnos_atencion_citas`),
+  KEY `FKbmisikhq9r4hi0tmj75h4o17o` (`id_detalle_sede`),
+  KEY `FKea066v2oj06rs2512uof0t7cm` (`id_medico`),
+  CONSTRAINT `FKbmisikhq9r4hi0tmj75h4o17o` FOREIGN KEY (`id_detalle_sede`) REFERENCES `detalle_sede` (`id_detalle_sede`),
+  CONSTRAINT `FKea066v2oj06rs2512uof0t7cm` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `turnos_atencion_citas`
+--
+
+LOCK TABLES `turnos_atencion_citas` WRITE;
+/*!40000 ALTER TABLE `turnos_atencion_citas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `turnos_atencion_citas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `numero_celular` varchar(15) DEFAULT NULL,
+  `num_documento` varchar(20) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `correo_electronico` varchar(100) DEFAULT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `tipo_documento` enum('CE','DNI') NOT NULL,
+  `tipo_usuario` enum('ADMINISTRADOR','PACIENTE') NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `UK8xpa2qm0ujqjafyr2npk0gn1r` (`num_documento`),
+  UNIQUE KEY `UKd431che2bnb0wabhvt1wqlndc` (`numero_celular`),
+  UNIQUE KEY `UKduxldumspflsqyka52vo72hse` (`correo_electronico`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'987654321','12345678','Amped','henry@correo.com','Henry','Admin123','DNI','ADMINISTRADOR');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-07-02 16:50:33
+
+/************************************/
